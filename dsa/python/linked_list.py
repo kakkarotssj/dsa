@@ -6,12 +6,14 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
-
-    def add_node(self, data):
+    
+    @staticmethod
+    def add_node(data):
         x = Node(data)
         return x
 
-    def print_list(self, x):
+    @staticmethod
+    def print_list(x):
         while (x):
             print x.data
             x = x.next
