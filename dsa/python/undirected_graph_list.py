@@ -69,7 +69,7 @@ class Graph:
                     print "Node does not exist. Try again"
 
     def print_graph(self):
-        for i in range(self.total_nodes):
+        for i in range(len(self.nodes)):
             print "Adjacency list of vertex " + str(self.nodes[i])
             temp = self.arrayll[i].head
             print "head -> ",
@@ -81,13 +81,24 @@ class Graph:
                 temp = temp.next
             print ""
 
+    def add_new_node(self):
+        self.arrayll.append(LinkedList())
+
+        print "Enter new node: "
+        new_node = raw_input()
+        self.nodes.append(new_node)
+        self.add_edges()
+
 
 def main():
     print " \t\t\t\t\t ***** DEMONSTRATING UNDIRECTED GRAPH USING ADJACENCY LIST "
     graph = Graph()
     graph.print_graph()
 
+    print "Adding new node"
+    graph.add_new_node()
+    graph.print_graph()
+
 
 if __name__ == "__main__":
     main()
-
