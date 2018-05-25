@@ -89,6 +89,33 @@ class Graph:
         self.nodes.append(new_node)
         self.add_edges()
 
+    def remove_node(self):
+        print "Enter value of the node to be removed"
+        node = raw_input()
+        popped_index = self.nodes.index(node)
+        self.nodes.remove(node)
+
+        temp = self.arrayll.pop(popped_index)
+        del temp
+
+        i = 0
+        while i < len(self.arrayll):
+            if self.arrayll[i].head.data == node:
+                temp = self.arrayll[i].head
+                self.arrayll[i].head = self.arrayll[i].head.next
+                del temp
+            else:
+                temp = self.arrayll[i].head
+                while temp.next:
+                    if temp.next.data == node:
+                        temp2 = temp.next
+                        temp.next = temp.next.next
+                        del temp2
+                    else:
+                        temp = temp.next
+
+            i += 1
+
 
 def main():
     print " \t\t\t\t\t ***** DEMONSTRATING UNDIRECTED GRAPH USING ADJACENCY LIST "
@@ -97,6 +124,10 @@ def main():
 
     print "Adding new node"
     graph.add_new_node()
+    graph.print_graph()
+
+    print "Removing a node"
+    graph.remove_node()
     graph.print_graph()
 
 
